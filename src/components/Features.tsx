@@ -28,7 +28,7 @@ export default function Features() {
       title: "매장 모드",
       desc: "오프라인 매장에서 QR 스캔만으로 정확한 제품 정보를 파악합니다.",
       icon: <ShoppingBag />,
-      image: "https://images.unsplash.com/photo-1470309634124-77742d4f2081?q=80&w=1000",
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000",
       color: "slate"
     }
   ];
