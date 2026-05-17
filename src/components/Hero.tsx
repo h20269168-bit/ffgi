@@ -15,18 +15,19 @@ export default function Hero({ onContactClick }: HeroProps) {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="relative z-10"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-synk-electric/5 border border-synk-electric/10 text-synk-electric text-[10px] font-bold uppercase tracking-[0.2em] mb-10">
-            <span className="w-1.5 h-1.5 rounded-full bg-synk-electric animate-pulse" />
-            SYNK.
+          <div className="mb-16">
+            <span className="font-display font-black text-7xl lg:text-8xl tracking-tighter bg-linear-to-br from-synk-electric to-synk-dark bg-clip-text text-transparent uppercase">
+              SYNK
+            </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-display leading-[1.1] mb-10 tracking-tight text-synk-dark">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-display leading-[1.1] mb-10 tracking-tight text-synk-dark">
             <span className="block whitespace-nowrap">누구나 자신의 스타일과 취향을</span>
             <span className="block font-extrabold text-synk-electric whitespace-nowrap">독립적으로 표현할 수 있는</span>
             <span className="block whitespace-nowrap">경험을 목표로 합니다.</span>
           </h1>
           <p className="text-lg lg:text-xl text-synk-dark/60 leading-relaxed max-w-lg mb-12 font-medium">
             시각 정보를 음성과 촉각으로 번역하는 <br className="hidden md:block" />
-            접근성 기반 패션·뷰티 서비스, SYNK.
+            접근성 기반 패션·뷰티 서비스
           </p>
           <div className="flex flex-wrap gap-5">
             <button 
