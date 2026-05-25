@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Building2, Plus, Zap, Heart, TrendingUp, Mail, Send, CheckCircle2 } from 'lucide-react';
+import { Plus, Zap, Heart, TrendingUp, Send, CheckCircle2 } from 'lucide-react';
 import { useState, FormEvent } from 'react';
 
 export default function BusinessExpansion() {
@@ -8,65 +8,67 @@ export default function BusinessExpansion() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setFormStatus('sending');
-    setTimeout(() => setFormStatus('sent'), 1500);
+    setTimeout(() => setFormStatus('sent'), 1200);
   };
 
   const businessValues = [
-    { label: "접근성 확대", icon: <Zap size={16} /> },
-    { label: "ESG 가치 실현", icon: <Heart size={16} /> },
-    { label: "브랜드 이미지 개선", icon: <Plus size={16} /> },
-    { label: "새로운 UX 제공", icon: <TrendingUp size={16} /> },
+    { label: "실질적 정보 접근성 확대", icon: <Zap size={16} /> },
+    { label: "ESG 소셜 임팩트 가치 실현", icon: <Heart size={16} /> },
+    { label: "포용적인 유니버설 디자인", icon: <Plus size={16} /> },
+    { label: "새로운 감각 햅틱 UX 연구", icon: <TrendingUp size={16} /> },
   ];
 
   const roadmapItems = [
-    "메이크업 가이드 고도화",
-    "iOS 햅틱 연동 확장",
-    "브랜드 별 맞춤 분석 API",
-    "정밀 핏 체크 가이드",
-    "스마트 디바이스(Glass 등) 연동"
+    "보이스 내레이션 다국어(영어, 일어) 지원 고도화",
+    "iOS CoreHaptics 및 점자 스티치 드라이버 호환성 개발",
+    "오프라인 스마트 거치형 AI 태그 마키 설치 매장 확대",
+    "개선된 밀도 센서 탑재 가죽/세라믹 재질 분류 기능 스펙업",
+    "대학생 동반 사용자 필드 패널 접근성 지속 임상 분석"
   ];
 
   return (
-    <section id="contact" className="py-32 lg:py-56 bg-slate-50/50 overflow-hidden">
+    <section id="contact" className="py-28 lg:py-36 bg-gradient-to-b from-white to-gray-50 overflow-hidden relative border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
           
-          {/* Left Column: Business & Strategy */}
+          {/* Left Column: Vision & Strategy */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-7 space-y-16"
+            className="lg:col-span-7 space-y-12"
           >
-            <div className="space-y-8">
-              <div className="text-synk-electric font-bold tracking-[0.3em] uppercase text-[10px] mb-8">Business & Future</div>
-              <h2 className="text-4xl lg:text-6xl font-display font-light leading-tight tracking-tight text-synk-dark">
-                접근성 기반 쇼핑의 <br />
-                <span className="font-extrabold text-synk-electric">새로운 표준을 제안합니다.</span>
+            <div className="space-y-6">
+              <div className="text-[#00E5FF] font-display font-extrabold tracking-[0.25em] uppercase text-xs">
+                COLLABORATION & FUTURE
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-display font-light leading-tight tracking-tight text-[#222222]">
+                모두의 더 나은 내일을 위해 <br />
+                <span className="font-extrabold text-[#00E5FF]">새로운 접근성 표준을 만듭니다.</span>
               </h2>
-              <p className="text-slate-500 text-lg leading-relaxed font-medium">
-                ZARA, 무신사, 올리브영 등 글로벌 패션·뷰티 브랜드와 협업하여 <br className="hidden md:block" />
-                모두를 위한 쇼핑 경험을 확장하고자 합니다.
+              <p className="text-gray-500 text-sm sm:text-base leading-relaxed font-semibold">
+                ZARA, 올리브영, 무신사 소장처와의 연대를 시작으로, 누구나 동등하게 의류의 질감을 손끝으로 대면하는 인클루시브 생태계를 구축해 나갈 소셜 벤처 및 학술 연구 협업을 제안합니다.
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                {businessValues.map((v, i) => (
-                 <div key={i} className="p-6 bg-white border border-black/[0.03] rounded-3xl flex items-center gap-4 text-synk-dark font-bold text-sm shadow-sm transition-transform hover:scale-[1.02]">
-                    <div className="text-synk-electric">{v.icon}</div>
-                    {v.label}
-                 </div>
-               ))}
+                 <div key={i} className="p-5 bg-white border border-gray-150 rounded-2xl flex items-center gap-3.5 text-gray-700 font-bold text-xs shadow-xs transition duration-300 hover:border-[#00E5FF]/40 hover:shadow-md">
+                    <div className="text-[#00E5FF]">{v.icon}</div>
+                     <span>{v.label}</span>
+                  </div>
+                ))}
             </div>
 
-            <div className="p-12 bg-white border border-black/[0.03] rounded-[3rem] shadow-sm">
-               <h4 className="text-xl font-bold mb-8 text-synk-dark">Future Roadmap</h4>
-               <ul className="space-y-6">
+            {/* University Pitch Roadmap Box */}
+            <div className="p-8 bg-white border border-gray-150 rounded-[2rem] shadow-sm">
+               <h4 className="text-base font-bold mb-6 text-gray-800">Future Milestone</h4>
+               <ul className="space-y-4">
                   {roadmapItems.map((item, i) => (
-                    <li key={i} className="flex items-center gap-6 group">
-                       <span className="w-1.5 h-1.5 rounded-full bg-slate-200 group-hover:bg-synk-electric transition-colors" />
-                       <span className="text-slate-500 font-medium group-hover:text-synk-dark transition-colors">{item}</span>
-                    </li>
+                     <li key={i} className="flex items-center gap-4 group">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#00E5FF] transition-colors flex-shrink-0" />
+                        <span className="text-xs text-gray-400 font-semibold group-hover:text-gray-700 transition-colors">{item}</span>
+                     </li>
                   ))}
                </ul>
             </div>
@@ -74,65 +76,73 @@ export default function BusinessExpansion() {
 
           {/* Right Column: Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 25 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-5"
           >
-            <div className="glass-card-premium p-10 lg:p-14 border-black/5 h-full flex flex-col justify-center">
-              <h3 className="text-2xl font-display font-bold mb-10 text-synk-dark">Let's SYNK.</h3>
+            <div className="bg-white border border-gray-150 p-8 sm:p-10 rounded-[2.5rem] shadow-xl shadow-gray-100 flex flex-col justify-center">
+              <h3 className="text-2xl font-display font-black mb-6 text-gray-800 flex items-center gap-1">
+                Let's SYNK<span className="text-[#00E5FF]">.</span>
+              </h3>
+              <p className="text-xs text-gray-400 font-semibold mb-8">
+                 의견, 제휴 혹은 학술 연구 공동 연대 등 대학생 팀에게 전할 따뜻한 한마디나 협력 제안을 기다립니다.
+              </p>
               
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="space-y-3">
-                  <label className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Brand / Company</label>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">소속 단체 및 성명</label>
                   <input 
                     required
-                    placeholder="Enter your brand"
-                    className="w-full px-0 py-4 bg-transparent border-b border-black/[0.08] focus:outline-none focus:border-synk-electric transition-colors text-lg text-synk-dark"
+                    placeholder="단체명 또는 소속 부서 기재"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-[#00E5FF] transition-colors text-xs text-gray-750 font-semibold"
                   />
                 </div>
-                <div className="space-y-3">
-                  <label className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Contact Email</label>
+                <div className="space-y-2">
+                  <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">답신 받으실 이메일</label>
                   <input 
                     required
                     type="email"
-                    placeholder="email@company.com"
-                    className="w-full px-0 py-4 bg-transparent border-b border-black/[0.08] focus:outline-none focus:border-synk-electric transition-colors text-lg text-synk-dark"
+                    placeholder="your-email@study.com"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-[#00E5FF] transition-colors text-xs text-gray-750 font-semibold"
                   />
                 </div>
-                <div className="space-y-3">
-                  <label className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Inquiry</label>
+                <div className="space-y-2">
+                  <label className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">제안 및 질문 내용</label>
                   <textarea 
                     required
-                    rows={1}
-                    placeholder="Tell us your vision"
-                    className="w-full px-0 py-4 bg-transparent border-b border-black/[0.08] focus:outline-none focus:border-synk-electric transition-colors text-lg text-synk-dark resize-none"
+                    rows={4}
+                    placeholder="메시지 또는 응원글을 아낌없이 남겨주세요."
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-[#00E5FF] transition-colors text-xs text-gray-750 font-semibold resize-none"
                   />
                 </div>
                 
                 <button 
                   disabled={formStatus !== 'idle'}
-                  className={`w-full py-6 rounded-full font-bold flex items-center justify-center gap-3 transition-all glow-on-hover mt-10 shadow-xl shadow-synk-electric/10 ${
-                    formStatus === 'sent' ? 'bg-green-600' : 'bg-synk-electric hover:bg-blue-600 active:scale-95 text-white'
+                  className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2.5 transition-all text-xs uppercase tracking-wider mt-4 shadow-md ${
+                    formStatus === 'sent' 
+                      ? 'bg-green-500 text-white' 
+                      : 'bg-[#00E5FF] hover:bg-[#00D0EE] text-gray-950 hover:scale-[1.01] active:scale-95'
                   }`}
                 >
                   {formStatus === 'idle' && (
                     <>
-                      Submit Proposal
-                      <Send size={18} />
+                      <span>프로포절 보내기</span>
+                      <Send size={14} />
                     </>
                   )}
-                  {formStatus === 'sending' && <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />}
+                  {formStatus === 'sending' && <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />}
                   {formStatus === 'sent' && (
                     <>
-                      Thank You
-                      <CheckCircle2 size={18} />
+                      <span>접수 완료</span>
+                      <CheckCircle2 size={14} />
                     </>
                   )}
                 </button>
               </form>
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

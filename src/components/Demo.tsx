@@ -1,94 +1,103 @@
 import { motion } from 'motion/react';
-import { Volume2, Radio, Smartphone, Share2 } from 'lucide-react';
+import { Fingerprint, Scan, Waves, Sparkles, ArrowRight } from 'lucide-react';
 
 export default function Demo() {
-  const hapticBehaviors = [
-    { type: "짧은 진동", desc: "선택 및 확인 상태", icon: <Radio className="text-synk-electric" /> },
-    { type: "긴 진동", desc: "분석 완료 및 정보 로드", icon: <Radio className="text-synk-electric animate-pulse" /> },
-    { type: "강한 진동", desc: "경고 또는 오류 상태", icon: <Radio className="text-red-500" /> },
+  const steps = [
+    {
+      num: "01",
+      title: "계정 음성 간편 로그인",
+      desc: "본인의 음성 톤 주파수와 지문을 가볍게 인식하여 보안 환경에서 즉시 포털에 접속합니다.",
+      icon: <Fingerprint className="text-[#00E5FF]" />,
+      action: "약 2초 내 전용 보조 UI 전환"
+    },
+    {
+      num: "02",
+      title: "카메라 대면 QR & 사물 스캔",
+      desc: "스마트폰 카메라로 옷감의 질감 또는 오프라인 제휴 매장에 부착된 특수 사물태그를 포착합니다.",
+      icon: <Scan className="text-[#00E5FF]" />,
+      action: "화면 정렬 가이드 음성 송출"
+    },
+    {
+      num: "03",
+      title: "소리 & 햅틱 질감 스트림 수신",
+      desc: "색채 및 밀도를 파싱한 AI가 정교한 한국어 내레이션과 100Hz 미립 촉각 햅틱 진동을 전송합니다.",
+      icon: <Waves className="text-[#00E5FF]" />,
+      action: "손끝을 진동 자극으로 직접 번역"
+    },
+    {
+      num: "04",
+      title: "개인 스마트 보관함 수거",
+      desc: "인증 완료된 코스메틱과 패션 코디들을 개인 영구 마이 수납장에 등록하여 안전하게 조합합니다.",
+      icon: <Sparkles className="text-[#00E5FF]" />,
+      action: "장시장 독립적인 스타일링 완성"
+    }
   ];
 
   return (
-    <section id="demo" className="py-32 lg:py-56 bg-white overflow-hidden">
+    <section id="demo" className="py-28 lg:py-36 bg-white overflow-hidden relative border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          {/* Voice Demo */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div>
-              <div className="text-synk-electric font-bold tracking-[0.3em] uppercase text-[10px] mb-8">Experience: Voice</div>
-              <h3 className="text-3xl lg:text-5xl font-display font-bold leading-tight mb-8 text-synk-dark">
-                당신의 질문에 <br />
-                데이터로 대답합니다.
-              </h3>
-              <p className="text-slate-500 text-lg leading-relaxed font-medium">
-                버튼 하나하나의 역할부터 분석 결과의 세세한 수치까지, <br />
-                SYNK의 보이스 인터페이스를 미리 경험해보세요.
-              </p>
-            </div>
+        
+        {/* Title and Intro */}
+        <div className="text-center mb-24">
+          <span className="text-[#00E5FF] font-mono font-bold tracking-[0.25em] uppercase text-xs mb-3 block">
+            USER SERVICE WORKFLOW
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-display font-light leading-tight tracking-tight text-[#222222]">
+            누구나 똑같이 쉽고 직관적인 <span className="font-extrabold text-[#00E5FF]">사용자 인터랙션 흐름</span>
+          </h2>
+          <p className="text-gray-500 mt-5 max-w-xl mx-auto text-sm sm:text-base">
+            어려운 추가 교육 필요 없이, 자연스러운 일상 동작만으로 완벽하고 자유로운 패션 쇼핑과 톤 관리를 가능하게 합니다.
+          </p>
+        </div>
 
-            <div className="space-y-4">
-              {[
-                "카메라 분석 화면입니다.",
-                "차분한 분위기의 딥블루 컬러입니다.",
-                "소재는 얇고 신축성이 좋은 원형 본딩 웨이브입니다."
-              ].map((text, i) => (
-                <div key={i} className="flex items-center gap-6 p-6 rounded-3xl bg-slate-50 border border-black/[0.03] group hover:border-synk-electric/20 transition-all cursor-pointer">
-                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-slate-300 group-hover:text-synk-electric shadow-sm transition-colors">
-                     <Volume2 size={20} />
-                  </div>
-                  <span className="text-sm font-bold text-synk-dark">“{text}”</span>
+        {/* Step Flow Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+          
+          {/* Background Connector Line on Desktop */}
+          <div className="hidden md:block absolute top-[52px] left-[10%] right-[10%] h-[1.5px] bg-gray-100 -z-10" />
+
+          {steps.map((s, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.8 }}
+              className="flex flex-col bg-gray-50 border border-gray-100 rounded-[2.5rem] p-6 lg:p-8 transition-all hover:bg-white hover:border-[#00E5FF]/40 hover:shadow-xl hover:shadow-[#00E5FF]/5 relative group"
+            >
+              {/* Step number badge & icon */}
+              <div className="flex items-center justify-between mb-8">
+                <span className="font-display font-black text-3xl tracking-tighter text-[#00E5FF]/30 group-hover:text-[#00E5FF] transition-colors leading-none">
+                  {s.num}
+                </span>
+                
+                <div className="w-11 h-11 rounded-2xl bg-white border border-gray-100 flex items-center justify-center shadow-xs">
+                  {s.icon}
                 </div>
-              ))}
-            </div>
-          </motion.div>
+              </div>
 
-          {/* Haptic Demo */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="p-12 lg:p-16 bg-synk-dark rounded-[3rem] text-white overflow-hidden relative"
-          >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-synk-electric/10 blur-[120px] rounded-full pointer-events-none" />
-            
-            <div className="relative z-10 space-y-12">
-              <div>
-                <div className="text-synk-electric font-bold tracking-[0.3em] uppercase text-[10px] mb-8">Experience: Haptic</div>
-                <h3 className="text-3xl font-display font-bold mb-6">손끝의 피드백.</h3>
-                <p className="text-slate-400 text-sm font-medium leading-relaxed">
-                  현재 Android 환경에서 우선 구현되었으며, <br />
-                  향후 iOS 환경까지 확장 예정인 SYNK의 햅틱 시스템입니다.
+              {/* Text Information */}
+              <div className="space-y-4 flex-1">
+                <h4 className="text-base font-bold text-gray-800 font-display">
+                  {s.title}
+                </h4>
+                <p className="text-xs text-gray-400 font-medium leading-relaxed">
+                  {s.desc}
                 </p>
               </div>
 
-              <div className="space-y-6">
-                 {hapticBehaviors.map((h, i) => (
-                   <div key={i} className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/5">
-                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
-                         {h.icon}
-                      </div>
-                      <div>
-                         <div className="text-sm font-bold">{h.type}</div>
-                         <div className="text-xs text-slate-500 font-medium">{h.desc}</div>
-                      </div>
-                   </div>
-                 ))}
+              {/* Action output tag */}
+              <div className="mt-6 pt-5 border-t border-gray-200/50 flex items-center justify-between">
+                <span className="text-[10px] text-gray-400 font-bold tracking-tight">{s.action}</span>
+                {i < steps.length - 1 && (
+                  <ArrowRight size={13} className="text-[#00E5FF]/50 md:hidden block" />
+                )}
               </div>
 
-              <div className="pt-8 border-t border-white/10 flex items-center gap-4 text-xs font-mono text-slate-500">
-                 <Smartphone size={14} />
-                 <span>Optimized for Android</span>
-                 <Share2 size={14} className="ml-4" />
-                 <span>iOS Expansion Roadmap</span>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
+
       </div>
     </section>
   );

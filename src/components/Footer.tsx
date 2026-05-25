@@ -4,37 +4,36 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="footer" className="bg-synk-dark py-24 border-t border-white/5">
+    <footer id="footer" className="bg-gray-50 py-20 border-t border-gray-200/60 relative z-10">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-           <div className="lg:col-span-4 space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
+           <div className="lg:col-span-4 space-y-6">
               <div className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-synk-electric rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-[#00E5FF] rounded-xl flex items-center justify-center">
                   <span className="font-display font-bold text-xl tracking-tighter text-white">S</span>
                 </div>
-                <span className="font-display font-bold text-3xl tracking-tight text-white uppercase">SYNK</span>
+                <span className="font-display font-extrabold text-2xl tracking-tight text-[#222222] uppercase">SYNK</span>
               </div>
-              <p className="text-slate-500 text-sm leading-relaxed max-w-sm font-medium">
-                본 서비스는 프로젝트를 시연하기 위한 프로토타입입니다. <br />
-                시각 장애인의 미적 자유와 <br />
-                완전한 쇼핑 독립을 위한 AI 솔루션
+              <p className="text-gray-400 text-xs leading-relaxed max-w-sm font-semibold">
+                본 웹사이트는 디지털 가치를 포용하는 시각 정보 접근성 보조 기술 'SYNK'의 공모전 및 기말 시연을 목적으로 구축된 리액트 하이파이 필드 쇼케이스 프로토타입입니다.
               </p>
            </div>
            
-           <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-16">
-             <div className="space-y-8">
-                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Project Info</h4>
-                <div className="text-sm text-slate-300 leading-relaxed space-y-2">
-                   <p className="text-white font-bold">디지털인문예술입문</p>
-                   <p>2026학년도 1학기 기말 프로젝트</p>
+           <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+             <div className="space-y-4">
+                <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest font-mono">Academic Project Info</h4>
+                <div className="text-xs text-gray-500 leading-relaxed space-y-1.5 font-semibold">
+                   <p className="text-gray-800 font-extrabold text-sm">디지털인문예술입문</p>
+                   <p>2026학년도 1학기 최종 발표 과제</p>
+                   <p className="text-gray-400">장벽 없는 배리어프리 실현 목적</p>
                 </div>
              </div>
 
-             <div className="space-y-8">
-                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Team Members</h4>
-                <div className="flex flex-wrap gap-x-6 gap-y-3">
+             <div className="space-y-4">
+                <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest font-mono">Project Team Members</h4>
+                <div className="flex flex-wrap gap-x-5 gap-y-2.5">
                   {team.map((name) => (
-                    <span key={name} className="text-sm text-slate-400 hover:text-white transition-colors cursor-default font-medium">
+                    <span key={name} className="text-xs text-gray-500 hover:text-[#00E5FF] transition-colors cursor-default font-extrabold">
                       {name}
                     </span>
                   ))}
@@ -43,11 +42,12 @@ export default function Footer() {
            </div>
         </div>
 
-        <div className="mt-32 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-slate-600 font-mono uppercase tracking-widest">
-            <p>© 2026 SYNK Prototype. Built for Exhibition.</p>
-            <div className="flex gap-12">
-                <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
-                <span className="hover:text-slate-400 cursor-pointer">Terms of Service</span>
+        <div className="mt-20 pt-8 border-t border-gray-200/50 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] text-gray-400 font-mono uppercase tracking-widest font-bold">
+            <p>© 2026 SYNK Team Project. All rights reserved for Exhibition.</p>
+            <div className="flex gap-8">
+                <span className="hover:text-gray-600 cursor-pointer">Privacy Policy</span>
+                <span className="hover:text-gray-600 cursor-pointer text-gray-300">|</span>
+                <span className="hover:text-gray-600 cursor-pointer">Terms & Conditions</span>
             </div>
         </div>
       </div>

@@ -1,82 +1,91 @@
 import { motion } from 'motion/react';
-import { MousePointer2, Type, Palette, Layout } from 'lucide-react';
+import { Type, Palette, Layout, Smartphone } from 'lucide-react';
 
 export default function About() {
   const painPoints = [
-    { icon: <Palette />, label: "이미지 중심 정보" },
-    { icon: <Type />, label: "작은 텍스트" },
-    { icon: <Palette />, label: "색상 기반 정보 전달" },
-    { icon: <Layout />, label: "시각적인 버튼 구조" },
+    { icon: <Palette size={24} />, label: "시각 위주의 정보 구조", desc: "텍스트나 오디오 설명 없이 이미지만 나열된 쇼핑 플랫폼 구조" },
+    { icon: <Type size={24} />, label: "고정된 레이아웃 & 폰트", desc: "고대비 또는 글자 자유 확대 등 보조 도구 미지원" },
+    { icon: <Smartphone size={24} />, label: "햅틱 피드백 부재", desc: "화면을 터치해도 소리 외에는 어떤 질감 피드백도 없는 한계" },
+    { icon: <Layout size={24} />, label: "동떨어진 접근성 전용 환경", desc: "일반 화면과 동떨어져 따로 이용해야 하는 소외감" },
   ];
 
   return (
-    <section id="about" className="py-32 lg:py-48 bg-slate-50/30 overflow-hidden">
+    <section id="about" className="py-28 lg:py-36 bg-white overflow-hidden relative border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
-          {/* Section 2: Before */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          
+          {/* Top Intro Section - Slogan */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-12 mb-24"
+            className="lg:col-span-12"
           >
-            <div className="text-synk-electric font-bold tracking-[0.3em] uppercase text-[10px] mb-8">The Status Quo</div>
-            <h2 className="text-4xl lg:text-6xl font-display font-light leading-tight mb-12 tracking-tight text-synk-dark">
-              대부분의 서비스는 <br />
-              <span className="font-extrabold">‘보는 것’을 기준으로</span> 설계됩니다.
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-              {painPoints.map((p, i) => (
-                <div key={i} className="p-8 bg-white border border-black/[0.03] rounded-3xl flex flex-col items-center gap-4 text-center group hover:border-synk-electric/20 transition-colors">
-                  <div className="text-slate-300 group-hover:text-synk-electric transition-colors">
-                    {p.icon}
-                  </div>
-                  <span className="text-sm font-bold text-synk-dark leading-tight">{p.label}</span>
-                </div>
-              ))}
+            <div className="text-[#00E5FF] font-display font-extrabold tracking-[0.25em] uppercase text-xs mb-4">
+              THE STATUS QUO / BACKGROUND
             </div>
-            <p className="text-slate-500 text-lg lg:text-2xl font-medium leading-relaxed max-w-4xl">
-              시각장애인과 저시력 사용자는 일상 속 다양한 정보에 접근하기 어렵습니다. <br className="hidden md:block" />
-              특히 패션·뷰티 영역에서는 물리적 접근성을 넘어 ‘자기표현’의 기회조차 제한되곤 합니다.
+            
+            <h2 className="text-3xl sm:text-5xl font-display font-light leading-tight mb-8 tracking-tight text-[#222222]">
+              대부분의 쇼핑과 뷰티 서비스는 <br />
+              <span className="font-extrabold text-[#00E5FF]">‘보는 것’만을 전제로</span> 설계됩니다.
+            </h2>
+
+            <p className="text-gray-500 text-base sm:text-lg font-medium leading-relaxed max-w-3xl mb-12">
+              우리가 매일 마주하는 이미지 중심 쇼핑 채널들은 저시력 환자와 시각장애인 분들에게 장벽이 됩니다. <br />
+              특히 패션과 미를 표현하는 즐거움은 단순 소비를 넘어 인간 고유의 정체성을 보여주는 수단입니다. <br />
+              SYNK는 바로 이 접근성의 불균형에서 시작되었습니다.
             </p>
           </motion.div>
 
-          {/* Section 3: Fashion & Beauty Problem */}
-          <motion.div 
+          {/* Pain Point Grid */}
+          <div className="lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {painPoints.map((p, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 bg-gray-50 border border-gray-100/80 rounded-[2rem] flex flex-col items-start gap-4 transition duration-300 hover:border-[#00E5FF]/50 hover:bg-white hover:shadow-lg hover:shadow-[#00E5FF]/5"
+              >
+                <div className="text-gray-400 p-3 bg-white border border-gray-100 rounded-2xl">
+                  {p.icon}
+                </div>
+                <div>
+                  <h4 className="text-base font-bold text-gray-800 leading-tight mb-2">{p.label}</h4>
+                  <p className="text-xs text-gray-400 font-medium leading-relaxed">{p.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Beautiful Quote block like a premium college sites project */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-12 p-12 lg:p-24 bg-synk-dark rounded-[3rem] text-white relative overflow-hidden"
+            className="lg:col-span-12 mt-8 p-10 lg:p-14 bg-gradient-to-r from-gray-50 to-white border border-gray-100 rounded-[2.5rem] relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-synk-electric/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
-            
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h3 className="text-3xl lg:text-5xl font-display font-bold leading-tight mb-8">
-                  패션과 뷰티는 단순 소비가 아니라, <br />
-                  <span className="text-synk-electric">자신의 정체성을 표현하는</span> 경험입니다.
+            <div className="absolute top-0 right-0 w-40 h-40 bg-[#00E5FF]/5 blur-2xl rounded-full" />
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+              <div className="max-w-2xl">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 leading-snug mb-4">
+                  "동일한 권리와 동등한 표현의 가치를 추구합니다."
                 </h3>
-                <p className="text-slate-400 text-lg leading-relaxed">
-                  하지만 현재 대부분의 서비스는 시각 정보에만 의존하고 있어, <br />
-                  누군가에게는 이 소중한 자기표현의 과정이 <br />
-                  넘기 힘든 벽이 되기도 합니다.
+                 <p className="text-xs sm:text-sm text-gray-500 leading-relaxed font-semibold">
+                  패션의 정수는 소재의 털날림, 짜임 밀도, 완벽한 립스틱 산의 좌우 정수 배합 등 미세한 차이에 존재합니다. <br />
+                  장벽 없는 스마트 인터랙션을 통해 평등하고 온전한 가치와 최적화된 패션 경험을 가꿉니다.
                 </p>
               </div>
-              <div className="space-y-8">
-                {[
-                  "제품의 미세한 분위기 파악의 어려움",
-                  "소재의 질감과 정확한 색감 정보 부족",
-                  "메이크업 상태를 독립적으로 확인하기 힘든 구조",
-                  "온라인 쇼핑 플랫폼의 접근성 제한"
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <span className="text-synk-electric font-mono font-bold">0{i+1}</span>
-                    <span className="text-slate-300 font-medium">{item}</span>
-                  </div>
-                ))}
+              <div className="flex flex-col gap-2 flex-shrink-0 text-left bg-white border border-gray-100 rounded-2xl p-5 shadow-xs">
+                <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">PROJECT FOUNDATION</span>
+                <span className="text-xs font-bold text-gray-800">Inclusive Shopping (2026)</span>
+                <hr className="border-gray-100 my-1.5" />
+                <span className="text-[10px] font-mono text-[#00E5FF] font-black uppercase">SYNK CORE PHILOSOPHY</span>
               </div>
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

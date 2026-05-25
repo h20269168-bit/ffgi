@@ -7,40 +7,44 @@
   --font-display: "Outfit", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-synk-electric: #0055FF;
-  --color-synk-navy: #FFFFFF;
-  --color-synk-dark: #1A1A1A;
+  --color-synk-electric: #00E5FF;
+  --color-synk-navy: #222222;
+  --color-synk-dark: #F7F7F7;
   --color-synk-pure: #FFFFFF;
+  --color-synk-yellow: #FEF08A;
 }
 
 @layer base {
   body {
-    @apply bg-white text-synk-dark font-sans antialiased selection:bg-synk-electric selection:text-white leading-relaxed tracking-tight;
+    @apply bg-white text-[#222222] font-sans antialiased selection:bg-[#00E5FF]/20 selection:text-[#222222] leading-relaxed tracking-tight;
     word-break: keep-all;
     overflow-wrap: break-word;
   }
 }
 
 .mesh-gradient {
-  background: radial-gradient(at 0% 0%, rgba(0, 85, 255, 0.05) 0px, transparent 50%),
-              radial-gradient(at 100% 0%, rgba(0, 0, 0, 0.02) 0px, transparent 50%),
-              radial-gradient(at 50% 100%, rgba(0, 85, 255, 0.02) 0px, transparent 50%);
+  background: radial-gradient(at 0% 0%, rgba(0, 229, 255, 0.1) 0px, transparent 60%),
+              radial-gradient(at 100% 100%, rgba(0, 229, 255, 0.08) 0px, transparent 60%);
 }
 
 .text-gradient-electric {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-synk-dark via-synk-dark to-synk-electric;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#222222] via-[#00E5FF] to-[#00D0EE];
 }
 
 .glass-card-premium {
-  @apply bg-white/80 backdrop-blur-2xl border border-black/[0.05] rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)];
+  @apply bg-white/80 backdrop-blur-2xl border border-black/[0.05] rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.03)];
+}
+
+.glow-cyan-yellow {
+  box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15), 0 4px 10px rgba(0, 229, 255, 0.05);
 }
 
 .glow-on-hover {
-  @apply transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,29,255,0.3)] hover:border-synk-electric/50;
+  @apply transition-all duration-500 hover:shadow-[0_15px_40px_rgba(0,229,255,0.25)] hover:border-[#00E5FF]/70;
 }
 
 .iphone-bezel {
-  box-shadow: inset 0 0 2px 2px rgba(255,255,255,0.1), 0 20px 50px -10px rgba(0,0,0,0.8);
+  box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.05), 0 20px 50px -10px rgba(0,0,0,0.1);
 }
 
 @keyframes scan {
@@ -51,8 +55,8 @@
 }
 
 .laser-scan {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #0055FF, transparent);
-  box-shadow: 0 0 15px #0055FF;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00E5FF, transparent);
+  box-shadow: 0 0 15px #00E5FF;
   animation: scan 4s ease-in-out infinite;
 }
