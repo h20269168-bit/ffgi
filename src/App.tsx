@@ -1,172 +1,185 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X } from 'lucide-react';
-import Hero from './components/Hero';
-import ServicePortal from './components/ServicePortal';
-import About from './components/About';
-import SolutionIntro from './components/SolutionIntro';
-import Features from './components/Features';
-import Demo from './components/Demo';
-import AppPreview from './components/AppPreview';
-import Vision from './components/Vision';
-import BusinessExpansion from './components/BusinessExpansion';
+import { Menu, X, ArrowUp } from 'lucide-react';
+
+// Import newly created modular pages
+import Home from './pages/Home';
+import AboutPage from './pages/AboutPage';
+import FeaturesPage from './pages/FeaturesPage';
+import PreviewPage from './pages/PreviewPage';
+import VisionPage from './pages/VisionPage';
+import ContactPage from './pages/ContactPage';
+
+// Import footer
 import Footer from './components/Footer';
 
-export default function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
-
+// Helper component to scroll window to top smoothly on router path transitions
+function ScrollToTop() {
+  const { pathname } = useLocation();
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['hero', 'about', 'features', 'demo', 'vision', 'contact'];
-      const scrollPosition = window.scrollY + 200;
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  }, [pathname]);
+  return null;
+}
 
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80; // Height of navigation
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setActiveSection(id);
-    }
-  };
+// Inner Navigation helper to share state and track active paths
+function MainAppContent() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
-    { name: 'Home', id: 'hero' },
-    { name: '서비스 소개', id: 'about' },
-    { name: '주요 기능', id: 'features' },
-    { name: '사용자 흐름', id: 'demo' },
-    { name: '기대 효과', id: 'vision' },
+    { name: 'HOME', path: '/' },
+    { name: 'ABOUT', path: '/about' },
+    { name: 'FEATURES', path: '/features' },
+    { name: 'PREVIEW', path: '/preview' },
+    { name: 'VISION', path: '/vision' },
+    { name: 'CONTACT', path: '/contact' },
   ];
 
+  // Helper to determine if path is matching to set visual indicator
+  const isPathActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
+
   return (
-    <div className="min-h-screen bg-white text-[#222222] font-sans selection:bg-[#00E5FF]/20 selection:text-[#222222]">
-      {/* Navigation */}
-      <nav id="navbar" className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 transition-all duration-300">
+    <div className="min-h-screen bg-white text-[#222222] font-sans selection:bg-[#00E5FF]/20 selection:text-[#222222] flex flex-col justify-between">
+      {/* Scroll to Top utility */}
+      <ScrollToTop />
+
+      {/* Navigation Header bar */}
+      <nav id="navbar" className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-100/80 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div 
+          
+          {/* Logo brand linked to index */}
+          <Link 
+            to="/" 
             className="flex items-center gap-3 cursor-pointer group"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => setIsMenuOpen(false)}
           >
             <div className="w-10 h-10 bg-[#00E5FF] rounded-xl flex items-center justify-center shadow-lg shadow-[#00E5FF]/20 group-hover:scale-105 transition-all">
               <span className="font-display font-black text-xl tracking-tighter text-white">S</span>
             </div>
-            <span className="font-display font-bold text-2xl tracking-tight text-[#222222] group-hover:text-[#00E5FF] transition-colors">SYNK<span className="text-[#00E5FF]">.</span></span>
-          </div>
+            <span className="font-display font-bold text-2xl tracking-tight text-[#222222] group-hover:text-[#00E5FF] transition-colors">
+              SYNK<span className="text-[#00E5FF]">.</span>
+            </span>
+          </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button 
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className={`text-sm font-semibold transition-colors duration-250 relative py-1.5 px-1 ${
-                  activeSection === link.id 
-                    ? 'text-[#00E5FF]' 
-                    : 'text-[#222222]/70 hover:text-[#222222]'
-                }`}
-              >
-                {link.name}
-                {activeSection === link.id && (
-                  <motion.div 
-                    layoutId="activeIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#00E5FF]"
-                  />
-                )}
-              </button>
-            ))}
-            <button 
-               onClick={() => scrollToSection('contact')}
-               className="px-6 py-2.5 bg-[#222222] text-white hover:bg-[#00E5FF] rounded-full text-xs font-bold transition-all shadow-sm shadow-[#222222]/10"
+          {/* Desktop Navigation Link tabs */}
+          <div className="hidden lg:flex items-center gap-7">
+            {navLinks.map((link) => {
+              const active = isPathActive(link.path);
+              return (
+                <Link 
+                  key={link.path}
+                  to={link.path}
+                  className={`text-[12px] font-mono font-black tracking-wider transition-colors duration-250 relative py-1.5 px-1 ${
+                    active 
+                      ? 'text-[#00E5FF]' 
+                      : 'text-[#222222]/65 hover:text-[#222222]'
+                  }`}
+                >
+                  {link.name}
+                  {active && (
+                    <motion.div 
+                      layoutId="activeIndicator"
+                      className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#00E5FF] rounded-full"
+                    />
+                  )}
+                </Link>
+              );
+            })}
+            <Link 
+               to="/contact"
+               className="ml-2 px-6 py-2.5 bg-[#222222] text-white hover:bg-[#00E5FF] hover:text-gray-950 rounded-full text-[10.5px] font-mono font-extrabold transition-all shadow-sm active:scale-95 tracking-wide"
             >
-              문의하기
-            </button>
+              INCOMING AT SIGN
+            </Link>
           </div>
 
-          {/* Mobile Toggle */}
-          <button className="md:hidden text-[#222222] p-2 hover:bg-gray-50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {/* Mobile hamburger toggler icon */}
+          <button 
+            className="lg:hidden text-[#222222] p-2 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Slide-Over Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="fixed inset-0 z-40 bg-white pt-24 px-6 md:hidden border-b border-gray-100 shadow-xl"
+            exit={{ opacity: 0, y: -12 }}
+            className="fixed inset-0 z-40 bg-white pt-24 px-6 lg:hidden border-b border-gray-150 shadow-2xl flex flex-col justify-between pb-8"
           >
-            <div className="flex flex-col gap-5 text-lg font-bold text-[#222222]">
-              {navLinks.map((link) => (
-                <button 
-                  key={link.id}
-                  onClick={() => { scrollToSection(link.id); setIsMenuOpen(false); }}
-                  className={`text-left py-3 border-b border-gray-100 flex justify-between items-center ${
-                    activeSection === link.id ? 'text-[#00E5FF]' : ''
-                  }`}
-                >
-                  <span>{link.name}</span>
-                  <span className="text-[10px] text-gray-300 font-mono">0{navLinks.indexOf(link) + 1}</span>
-                </button>
-              ))}
-              <button 
-                onClick={() => { setIsMenuOpen(false); scrollToSection('contact'); }}
-                className="text-left py-4 text-[#00E5FF] border-b border-gray-100 font-extrabold"
+            <div className="flex flex-col gap-4 text-base font-bold text-[#222222] pt-4 text-left">
+              <span className="text-[10px] font-mono font-bold text-gray-300 tracking-widest uppercase block mb-2">SYNK SITE DIRECTORY</span>
+              {navLinks.map((link, idx) => {
+                const active = isPathActive(link.path);
+                return (
+                  <Link 
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`py-3 border-b border-gray-50 flex justify-between items-center ${
+                      active ? 'text-[#00E5FF] font-black' : 'text-gray-600 font-medium'
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    <span className="text-[9px] text-[#00E5FF] font-mono">0{idx + 1}</span>
+                  </Link>
+                );
+              })}
+              
+              <Link 
+                to="/contact" 
+                onClick={() => setIsMenuOpen(false)}
+                className="py-4 text-[#00E5FF] font-black tracking-wider text-xs font-mono uppercase flex items-center justify-between"
               >
-                문의하기
-              </button>
+                <span>학술 제휴 메일 문의하기</span>
+                <span className="px-2.5 py-1.5 rounded-full bg-[#00E5FF]/10 text-[9px]">ACTIVE</span>
+              </Link>
+            </div>
+
+            <div className="text-[10px] text-gray-400 font-mono flex justify-between items-center border-t border-gray-50 pt-4">
+              <span>© 2026 SYNK CREATIVE INTERACTIVE.</span>
+              <span>VERSION 1.1</span>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <main className="pt-20">
-         <Hero onContactClick={() => scrollToSection('contact')} />
-         
-         {/* Live Prototype App Showcase */}
-         <div id="demo-interactive" className="bg-[#F7F7F7] py-16 border-b border-gray-100">
-            <div className="max-w-7xl mx-auto px-6">
-              <ServicePortal />
-            </div>
-         </div>
-
-         <About />
-         <SolutionIntro />
-         <Features />
-         <Demo />
-         <AppPreview />
-         <Vision />
-         <BusinessExpansion />
+      {/* Main Page Content routers with smooth fade animations */}
+      <main className="pt-20 flex-grow">
+        <AnimatePresence mode="wait">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/features" element={<FeaturesPage />} />
+            <Route path="/preview" element={<PreviewPage />} />
+            <Route path="/vision" element={<VisionPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </AnimatePresence>
       </main>
 
+      {/* Shared Footer component */}
       <Footer />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <MainAppContent />
+    </BrowserRouter>
   );
 }
