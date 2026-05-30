@@ -25,20 +25,32 @@ export default function AboutPage() {
     { keyword: "음성 안내", label: "Voice Navigation", desc: "음성은 단순 부가 효과가 아닌 메인 UX 레이어로서 화면 및 배치, 옷감의 상세 구성을 밀접 조율 전사합니다.", icon: <Sparkles size={18} /> },
     { keyword: "접근성 UX", label: "Accessible Interface", desc: "큰 터치 좌표 배치 및 음성 스위치 기능을 통해 자극과 피로를 대폭 낮추고 지체 없는 입력을 유도합니다.", icon: <Accessibility size={18} /> },
     { keyword: "독립적인 경험", label: "Independent Journey", desc: "누군가 골라주는 스타일이 아닌, 온전히 자신의 마음이 이끄는 질감과 스타일을 찾을 권리를 실현합니다.", icon: <UserCheck size={18} /> },
-    { keyword: "자기표현 경험", label: "Self Expression", desc: "모든 사람에게는 자기 정체성을 가꾸고 패션을 영유하여 사회적 소속감과 자신감을 완성할 동등한 권리가 있음을 지지합니다.", icon: <UserCheck size={18} /> }
+    { keyword: "자기표현 경험", label: "Self Expression", desc: "모든 사람에게는 자기 정체성을 가꾸고 패션을 영유하여 사회적 소속감과 자신감을 완성할 동등한 표현 권리가 있습니다.", icon: <Accessibility size={18} /> }
   ];
 
   return (
-    <div className="bg-white min-h-screen pt-20">
+    <div className="bg-white min-h-screen relative overflow-hidden">
+      {/* Decorative gradients */}
+      <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-[#00E5FF]/4 blur-[130px] rounded-full -z-10" />
+      <div className="absolute middle-1/2 left-0 w-[350px] h-[350px] bg-sky-100/20 blur-[100px] rounded-full -z-10" />
+
       {/* Intro Header */}
       <section className="pt-16 pb-20 max-w-7xl mx-auto px-6 text-center space-y-6">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-[#00E5FF] font-mono text-[11px] font-bold tracking-[0.25em] uppercase"
+        >
+          WHY WE EXIST
+        </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
           className="text-4xl sm:text-5xl font-display font-light text-[#222222] leading-tight"
         >
-          모든 사람이 아름다움을 경험할 수 있도록, <br />
-          <span className="font-extrabold text-[#00E5FF]">SYNK가 새로운 가능성을 엽니다.</span>
+          세상의 모든 아름다움을 공유할 권리 <br />
+          <span className="font-extrabold text-[#00E5FF]">SYNK가 한계를 허뭅니다.</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -46,32 +58,32 @@ export default function AboutPage() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 font-semibold max-w-xl mx-auto text-sm sm:text-base leading-relaxed"
         >
-          시각 정보의 한계를 넘어 누구나 자신만의 스타일을 경험할 수 있도록 돕는 접근성 기술입니다.
+          시각이 차단된 상태에서도 나만의 무드와 짜임새를 입체적으로 마주하도록 돕는 정교하고 따뜻한 접근성 인터랙션 기술의 뒷이야기를 나눕니다.
         </motion.p>
       </section>
 
       {/* Section 1: Problem Situation */}
-      <section className="py-20 bg-gray-50/50 border-y border-gray-100">
+      <section className="py-20 bg-gray-50 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-4 space-y-4">
-              <div className="inline-flex items-center gap-2 text-red-600 font-bold text-xs uppercase bg-red-50 px-3 py-1 rounded-full border border-red-100 animate-pulse">
-                <ShieldAlert size={13} />
+              <div className="inline-flex items-center gap-2 text-rose-500 font-bold text-xs uppercase bg-rose-50 px-3 py-1 rounded-full border border-rose-100">
+                <EyeOff size={13} />
                 <span>문제 제기 01</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-display font-black text-gray-800 tracking-tight leading-snug">
-                보는 것 만을 전제로 하는 <br />
-                모바일 쇼핑 환경
+                보는 것 만을 전제로 <br />
+                강요하는 모바일 쇼핑 환경
               </h2>
-              <p className="text-xs text-gray-500 font-semibold leading-relaxed">
+              <p className="text-xs text-gray-400 font-semibold leading-relaxed">
                 현재 전 세계 온라인 플랫폼의 95% 이상은 음성 대체 텍스트가 생략되어 있거나 이미지 중심의 설계 방식에만 온전히 구속되어 있습니다. 저시력 및 시각장애인 분들에게는 정보 접근성 자체가 또 다른 소외와 부조리로 남습니다.
               </p>
             </div>
 
             <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {visualBarriers.map((bar, i) => (
-                <div key={i} className="p-6 bg-white border border-gray-150 rounded-2xl space-y-2 hover:border-[#00E5FF]/30 transition-all">
-                  <div className="text-xs font-bold text-gray-800 flex items-center gap-2">
+                <div key={i} className="p-6 bg-white border border-gray-150 rounded-2xl space-y-2 hover:border-[#00E5FF]/40 transition-colors">
+                  <div className="text-xs font-bold text-[#222222] flex items-center gap-2">
                     <span className="text-[#00E5FF] font-mono">0{i+1}.</span>
                     {bar.title}
                   </div>
@@ -87,7 +99,7 @@ export default function AboutPage() {
       <section className="py-24 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-4 space-y-4 lg:order-last">
-            <div className="inline-flex items-center gap-2 text-red-600 font-bold text-xs uppercase bg-red-50 px-3 py-1 rounded-full border border-red-100 animate-pulse">
+            <div className="inline-flex items-center gap-2 text-[#00E5FF] font-bold text-xs uppercase bg-[#00E5FF]/10 px-3 py-1 rounded-full">
               <ShieldAlert size={13} />
               <span>문제 제기 02</span>
             </div>
@@ -95,8 +107,8 @@ export default function AboutPage() {
               패션과 뷰티영역 : <br />
               자기표현 권리의 전면적 배제
             </h2>
-            <p className="text-xs text-gray-500 font-semibold leading-relaxed">
-              패션과 뷰티는 단순한 소비 행위에서 나아가 세상에 자신을 보여주는 당당한 정체성 확립 아이템입니다. 하지만 대부분의 정보가 시각에 매몰되어 있어 이들이 취향을 직접 기르고 독립적으로 자신을 연출할 수 있는 자유와 주도권이 거의 차단됩니다.
+            <p className="text-xs text-gray-400 font-semibold leading-relaxed">
+              패션과 뷰티는 단순한 물건 소비 행위에서 나아가 세상에 자신을 보여주는 당당한 정체성 확립 채널입니다. 하지만 대부분의 정보가 시각에 매몰되어 있어 이들이 취향을 직접 기르고 독립적으로 자신을 연출할 수 있는 자유와 주도권이 원천 차단됩니다.
             </p>
           </div>
 
@@ -131,7 +143,7 @@ export default function AboutPage() {
               <span className="font-extrabold text-[#00E5FF]">5대 핵심 인클루시브 솔루션</span>
             </h2>
             <p className="text-gray-400 text-xs sm:text-sm font-semibold leading-relaxed max-w-xl mx-auto">
-              우리는 편견 없는 감각 번역 기술을 통해 고립되었던 시각장애 사용자와 장벽이 가득하던 기능들을 하나로 연결하여 아름다움의 평등함을 기획합니다.
+              우리는 편견 없는 감각 번역 기술을 통해 고립되었던 시각장애 사용자와 장벽이 가득하던 이커머스 채널을 하나로 연결하여 아름다움의 평등한 공기를 기획합니다.
             </p>
           </div>
 

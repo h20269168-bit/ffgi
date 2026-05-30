@@ -13,7 +13,7 @@ export default function FeaturesPage() {
     { title: "실시간 스크린 해설", desc: "사용자가 손끝으로 이동하는 컴포넌트나 카메라 감지 객체의 성질과 상세를 즉각 전사합니다.", icon: <Eye size={20} /> },
     { title: "포용적 터치 가이드", desc: "버튼 경계를 넘나들 때 짧은 햅틱과 텍스트 유도로 정확한 조작과 안전한 흐름을 지원합니다.", icon: <ShieldCheck size={20} /> },
     { title: "유니버설 대형 터치 영역", desc: "작고 답답한 포인트가 아닌, 시각장애 사용자의 손가락 타점이 빗나가지 않도록 충분히 키운 안전 구역.", icon: <Maximize size={20} /> },
-    { title: "다중 감도 햅틱 피드백", desc: "원단의 성긴 형태나 입술 좌우 정렬을 입체적 주기 진동(0.2초 스티치 등)으로 전달합니다.", icon: <Activity size={20} /> },
+    { title: "다중 감도 햅틱 자극", desc: "원단의 성긴 형태나 입술 좌우 정렬을 입체적 주기 진동(0.2초 스티치 등)으로 전달합니다.", icon: <Activity size={20} /> },
     { title: "감각 설명 모드 스위치", desc: "언제든지 세세한 뉘앙스를 풀어서 듣거나 간략히 필수 제어만 골라 들을 수 있는 최적 맞춤 변환기.", icon: <Info size={20} /> }
   ];
 
@@ -22,7 +22,7 @@ export default function FeaturesPage() {
       num: "01",
       title: "감각 번역 (Translation)",
       subtitle: "Multi-Sensory Streamer",
-      desc: "시각 정보를 정밀한 전용 음성 문장과 손끝의 햅틱 패턴으로 번역해 가공 출력을 전달합니다.",
+      desc: "시각 정보를 정밀한 전용 음성 문장과 손끝의 다진 주파수 햅틱 패턴으로 번역해 가공 출력을 전달합니다.",
       icon: <Layers size={22} className="text-[#00E5FF]" />
     },
     {
@@ -43,7 +43,7 @@ export default function FeaturesPage() {
       num: "04",
       title: "매장 모드 (In-Store Reader)",
       subtitle: "Offline QR Link",
-      desc: "오프라인 매장에서 부착된 QR이나 NFC 기반으로 옷감 정보를 휴대폰에 스트리밍합니다.",
+      desc: "제휴 무신사, 올리브영, ZARA 플래그십 매장에서 부착 QR이나 NFC 접근 시 옷감 정보를 폰에 스트리밍합니다.",
       icon: <Tag size={22} className="text-[#00E5FF]" />
     }
   ];
@@ -62,7 +62,7 @@ export default function FeaturesPage() {
           <span className="font-extrabold text-[#00E5FF]">SYNK의 감각 기술 연구</span>
         </h1>
         <p className="text-gray-400 font-semibold max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-          음성 부가 제공을 넘어서, 시각적인 한계를 본질적으로 배려하는 오디오 솔루션을 구축했습니다.
+          음성 부가 제공을 넘어서, 시각 한계를 본질적으로 배려하고 해방시키는 오디오 퍼스트 솔루션을 구축했습니다.
         </p>
       </section>
 
@@ -79,7 +79,7 @@ export default function FeaturesPage() {
               </h2>
               <div className="h-1 w-20 bg-[#00E5FF]" />
               <p className="text-gray-500 text-xs sm:text-sm font-semibold leading-relaxed">
-                SYNK는 소리와 진동을 중심으로 설계된 접근성 솔루션 앱입니다. 기획 초기 단계부터 소리와 진동 피드백을 핵심 기능으로 구축하여, 화면을 보지 않아도 직관적인 탐색과 조작이 가능하도록 설계되었습니다.
+                SYNK는 시각장애인용으로 덧글을 붙이는 일반적인 소외방식 보완 패치가 아닙니다. 기획 초기 설계 단계부터 소리와 진동 피드백의 리듬감을 메인 뼈대로 설정해, 보지 않고도 터치 좌표를 기민하게 예측하도록 유도하는 오디오 퍼스트 디지털 주권 솔루션입니다.
               </p>
             </div>
 

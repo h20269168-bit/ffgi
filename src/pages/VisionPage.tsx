@@ -71,7 +71,7 @@ export default function VisionPage() {
             </div>
 
             <p className="text-xs sm:text-sm text-gray-400 font-semibold max-w-2xl mx-auto leading-relaxed">
-              유니버셜 디자인은 소수를 위한 배려를 넘어 모두를 위한 경험을 만듭니다. 누구나 쉽고 편리하게 이용할 수 있는 인터페이스를 통해 더욱 포용적인 디지털 환경을 실현합니다.
+              장벽을 낮춘 유니버설 디자인은 특정 고립 소수만을 위한 외딴 보좌 장비가 아닙니다. 모든 사용자층이 더 직관적이고 편안하게 의사소통할 수 있도록 하는 최적의 인터페이스 구조이며, 온라인의 불확실한 질감을 해결할 수 있는 미래 표준 가치입니다.
             </p>
           </div>
         </div>
@@ -159,10 +159,10 @@ export default function VisionPage() {
 
           <div className="pt-6 text-center">
             <button
-              onClick={() => navigate('/contact')}
+              onClick={() => navigate('/team')}
               className="px-8 py-4 bg-[#222222] hover:bg-[#00E5FF] hover:text-[#222222] text-white font-semibold text-xs rounded-2xl tracking-wider transition-colors scroll-smooth cursor-pointer shadow-md"
             >
-              제안 및 학술 제휴 문의하기
+              함께 기획 설립한 SYNK 제작팀 만나보기
             </button>
           </div>
         </div>

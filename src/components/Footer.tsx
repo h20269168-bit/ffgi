@@ -15,7 +15,7 @@ export default function Footer() {
                 <span className="font-display font-extrabold text-2xl tracking-tight text-[#222222] uppercase">SYNK</span>
               </div>
               <p className="text-gray-400 text-xs leading-relaxed max-w-sm font-semibold">
-                본 웹사이트는 시각 정보 접근성을 지원하는 기술 'SYNK'의 공모전 출품 및 기말 시연을 목적으로 제작된 프로토타입입니다.
+                본 웹사이트는 디지털 가치를 포용하는 시각 정보 접근성 보조 기술 'SYNK'의 공모전 및 기말 시연을 목적으로 구축된 리액트 하이파이 필드 쇼케이스 프로토타입입니다.
               </p>
            </div>
            

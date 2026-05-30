@@ -9,6 +9,7 @@ import AboutPage from './pages/AboutPage';
 import FeaturesPage from './pages/FeaturesPage';
 import PreviewPage from './pages/PreviewPage';
 import VisionPage from './pages/VisionPage';
+import TeamPage from './pages/TeamPage';
 import ContactPage from './pages/ContactPage';
 
 // Import footer
@@ -34,6 +35,7 @@ function MainAppContent() {
     { name: 'FEATURES', path: '/features' },
     { name: 'PREVIEW', path: '/preview' },
     { name: 'VISION', path: '/vision' },
+    { name: 'TEAM', path: '/team' },
     { name: 'CONTACT', path: '/contact' },
   ];
 
@@ -68,41 +70,9 @@ function MainAppContent() {
             </span>
           </Link>
 
-          {/* Desktop Navigation Link tabs */}
-          <div className="hidden lg:flex items-center gap-7">
-            {navLinks.map((link) => {
-              const active = isPathActive(link.path);
-              return (
-                <Link 
-                  key={link.path}
-                  to={link.path}
-                  className={`text-[12px] font-mono font-black tracking-wider transition-colors duration-250 relative py-1.5 px-1 ${
-                    active 
-                      ? 'text-[#00E5FF]' 
-                      : 'text-[#222222]/65 hover:text-[#222222]'
-                  }`}
-                >
-                  {link.name}
-                  {active && (
-                    <motion.div 
-                      layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#00E5FF] rounded-full"
-                    />
-                  )}
-                </Link>
-              );
-            })}
-            <Link 
-               to="/contact"
-               className="ml-2 px-6 py-2.5 bg-[#222222] text-white hover:bg-[#00E5FF] hover:text-gray-950 rounded-full text-[10.5px] font-mono font-extrabold transition-all shadow-sm active:scale-95 tracking-wide"
-            >
-              INCOMING AT SIGN
-            </Link>
-          </div>
-
-          {/* Mobile hamburger toggler icon */}
+          {/* Hamburger toggler icon (Always visible on all screen sizes) */}
           <button 
-            className="lg:hidden text-[#222222] p-2 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer" 
+            className="text-[#222222] p-2 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer" 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -110,47 +80,49 @@ function MainAppContent() {
         </div>
       </nav>
 
-      {/* Mobile Menu Slide-Over Overlay */}
+      {/* Full-Screen Menu Slide-Over Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
-            className="fixed inset-0 z-40 bg-white pt-24 px-6 lg:hidden border-b border-gray-150 shadow-2xl flex flex-col justify-between pb-8"
+            className="fixed inset-0 z-40 bg-white pt-28 px-6 md:px-12 border-b border-gray-150 shadow-2xl flex flex-col justify-between pb-8"
           >
-            <div className="flex flex-col gap-4 text-base font-bold text-[#222222] pt-4 text-left">
-              <span className="text-[10px] font-mono font-bold text-gray-300 tracking-widest uppercase block mb-2">SYNK SITE DIRECTORY</span>
-              {navLinks.map((link, idx) => {
-                const active = isPathActive(link.path);
-                return (
-                  <Link 
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`py-3 border-b border-gray-50 flex justify-between items-center ${
-                      active ? 'text-[#00E5FF] font-black' : 'text-gray-600 font-medium'
-                    }`}
-                  >
-                    <span>{link.name}</span>
-                    <span className="text-[9px] text-[#00E5FF] font-mono">0{idx + 1}</span>
-                  </Link>
-                );
-              })}
-              
-              <Link 
-                to="/contact" 
-                onClick={() => setIsMenuOpen(false)}
-                className="py-4 text-[#00E5FF] font-black tracking-wider text-xs font-mono uppercase flex items-center justify-between"
-              >
-                <span>학술 제휴 메일 문의하기</span>
-                <span className="px-2.5 py-1.5 rounded-full bg-[#00E5FF]/10 text-[9px]">ACTIVE</span>
-              </Link>
-            </div>
+            <div className="max-w-2xl mx-auto w-full flex flex-grow flex-col justify-between">
+              <div className="flex flex-col gap-4 text-base font-bold text-[#222222] pt-4 text-left w-full">
+                <span className="text-[10px] font-mono font-bold text-gray-300 tracking-widest uppercase block mb-2">SYNK SITE DIRECTORY</span>
+                {navLinks.map((link, idx) => {
+                  const active = isPathActive(link.path);
+                  return (
+                    <Link 
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`py-3 md:py-4 border-b border-gray-50 flex justify-between items-center transition-all duration-200 hover:pl-2 ${
+                        active ? 'text-[#00E5FF] font-black' : 'text-gray-600 font-medium hover:text-[#222222]'
+                      }`}
+                    >
+                      <span className="text-lg md:text-xl">{link.name}</span>
+                      <span className="text-[9px] text-[#00E5FF] font-mono font-bold">0{idx + 1}</span>
+                    </Link>
+                  );
+                })}
+                
+                <Link 
+                  to="/contact" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="py-4 text-[#00E5FF] font-black tracking-wider text-xs font-mono uppercase flex items-center justify-between hover:underline"
+                >
+                  <span>학술 제휴 메일 문의하기</span>
+                  <span className="px-2.5 py-1.5 rounded-full bg-[#00E5FF]/10 text-[9px]">ACTIVE</span>
+                </Link>
+              </div>
 
-            <div className="text-[10px] text-gray-400 font-mono flex justify-between items-center border-t border-gray-50 pt-4">
-              <span>© 2026 SYNK CREATIVE INTERACTIVE.</span>
-              <span>VERSION 1.1</span>
+              <div className="text-[10px] text-gray-400 font-mono flex justify-between items-center border-t border-gray-50 pt-6 mt-6">
+                <span>© 2026 SYNK CREATIVE INTERACTIVE.</span>
+                <span>VERSION 1.1</span>
+              </div>
             </div>
           </motion.div>
         )}
@@ -165,6 +137,7 @@ function MainAppContent() {
             <Route path="/features" element={<FeaturesPage />} />
             <Route path="/preview" element={<PreviewPage />} />
             <Route path="/vision" element={<VisionPage />} />
+            <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </AnimatePresence>

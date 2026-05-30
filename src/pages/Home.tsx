@@ -187,15 +187,26 @@ export default function Home() {
             <span className="font-extrabold text-gradient-electric">진정한 배리어프리 디지털 라이프</span>
           </h2>
           <p className="text-gray-500 text-xs sm:text-sm leading-relaxed font-semibold">
-            우리는 패션 쇼핑과 뷰티가 인간의 본질적인 자기표현 방식이라고 믿습니다. 가치 있는 브랜드 파트너십을 바탕으로, 보조 오디오 스크립트 번역과 섬세한 햅틱 피드백 기술을 통해 누구나 편리하게 이용할 수 있는 포용적 디지털 쇼핑 생태계를 만들어가고 있습니다.
+            우리는 패션 쇼핑과 뷰티가 인간 고유의 정성스러운 행위임에 동의합니다. 가치 있는 브랜드 파트너십을 바탕으로, 보조 오디오 스크립트 번역과 미세 햅틱 자극 신호를 통해 포용적인 디지털 쇼핑 생태계를 개조하고 있습니다.
           </p>
+          <div className="pt-2 flex items-center gap-6">
+            <div className="text-left">
+              <div className="text-3xl font-display font-extrabold text-[#222222]">7+</div>
+              <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-1">열정적인 대학생 제작자</div>
+            </div>
+            <div className="w-px h-10 bg-gray-200" />
+            <div className="text-left">
+              <div className="text-3xl font-display font-extrabold text-[#222222]">2026</div>
+              <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-1">접근성 표준 정립의 해</div>
+            </div>
+          </div>
         </div>
 
         <div className="p-8 lg:p-12 bg-gradient-to-tr from-gray-50 to-white border border-gray-150 rounded-[2.5rem] relative overflow-hidden flex flex-col justify-between aspect-[4/3] shadow-inner">
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#00E5FF]/8 blur-2xl rounded-full" />
           <div className="text-xs font-mono font-extrabold text-[#00E5FF] tracking-widest uppercase">SYNK CORE ESSENCE</div>
           <p className="text-gray-700 text-sm sm:text-base leading-relaxed font-semibold italic my-auto">
-            "시각장애 사용자가 온라인에서도 옷감의 질감과 디테일을 똑같이 경험하고, 메이크업을 자유롭고 정교하게 완성할 수 있는 환경을 만들어갑니다."
+            "시각장애 사용자가 온라인에서도 옷감의 주름과 올을 똑같이 느끼며 메이크업 산을 정교하게 다듬는 독립적 주체로 혁신합니다."
           </p>
           <div className="flex items-center justify-between border-t border-gray-100 pt-4 mt-4">
             <span className="text-[10px] text-gray-400 font-semibold font-mono">EXHIBITED AT COLLEGE IN 2026</span>

@@ -192,9 +192,9 @@ export default function PreviewPage() {
             <div className="lg:col-span-6 p-8 bg-white border border-gray-150 rounded-[2.5rem] space-y-8 shadow-2xs">
               <div className="space-y-2 text-left">
                 <span className="text-[10px] text-gray-400 font-mono font-bold tracking-wider block uppercase">TACTILE SIMULATION</span>
-                <h3 className="text-lg font-bold text-gray-800">2단계 : 다감도 햅틱 피드백 체험</h3>
+                <h3 className="text-lg font-bold text-gray-800">2단계 : 다감도 햅틱 자극 체험</h3>
                 <p className="text-xs text-gray-400 leading-relaxed font-semibold">
-                  손끝 햅틱 모터를 제어하는 파형의 원리입니다. 각 진동 모드를 마우스를 대거나 클릭하여 소리와 가상 맥박을 경험해 보세요.
+                  손끝 햅틱 모터를 제어하는 파형의 강질 전사 원리입니다. 각 진동 모드를 마우스를 대거나 클릭하여 소리와 가상 맥박을 경험하세요.
                 </p>
               </div>
 
